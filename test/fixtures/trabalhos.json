@@ -1,0 +1,24 @@
+{
+    "trabalhos": [
+        {
+            "titulo": "Lista de Exercícios 1",
+            "descricao": "Resolução dos exercícios de 01 a 20 do capítulo 1."
+        }, 
+        {
+            "titulo": "Lista de Exercícios 2",
+            "descricao": "Resolução dos exercícios de 21 a 40 do capítulo 2."
+        }, 
+        {
+            "titulo": "Lista de Exercícios 3",
+            "descricao": "Resolução dos exercícios de 41 a 60 do capítulo 3."
+        }, 
+        {
+            "titulo": "Lista de Exercícios 4",
+            "descricao": "Resolução dos exercícios de 61 a 80 do capítulo 4."
+        }, 
+        {
+            "titulo": "Lista de Exercícios 5",
+            "descricao": "Resolução dos exercícios de 81 a 100 do capítulo 5."
+        }
+    ]
+}

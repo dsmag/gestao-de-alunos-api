@@ -1,5 +1,7 @@
 import  request from 'supertest';
 import { expect } from 'chai';
+import { api } from '../helpers/api.js'
+import 'dotenv/config';
 
 describe('Login', () => {
     it('deve retornar 200 quando o usuário e senha forem corretos', async () => {
@@ -39,6 +41,28 @@ describe('Login', () => {
         expect(loginResposta.status).to.equal(401);
     })
 
+    // Automação de Testes na Camada de Serviço (API): Trabalho de conclusão
+    it('deve retornar 200 quando o usuário e senha de ADMIN forem válidos', async () => {
+        const loginResposta = await api()
+            .post('/api/auth/login')
+            .set('Content-Type', 'application/json')
+            .send({
+                email: process.env.ADMIN_EMAIL,
+                senha: process.env.ADMIN_SENHA
+            });
 
+        expect(loginResposta.status).to.equal(200);
+    })
 
+    it('deve retornar 200 quando o usuário e senha de ALUNO forem válidos', async () => {
+        const loginResposta = await api()
+            .post('/api/auth/login')
+            .set('Content-Type', 'application/json')
+            .send({
+                email: process.env.ALUNO_EMAIL,
+                senha: process.env.ALUNO_SENHA
+            });
+
+        expect(loginResposta.status).to.equal(200);
+    });
 })
