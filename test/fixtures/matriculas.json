@@ -1,0 +1,32 @@
+[
+    {
+        "testTitle":"Validar que um aluno CAMILA que acaba de ser cadastrado pode ser matriculado em uma nova disciplina",
+        "dadosAluno":{ 
+            "nome": "Carolina Pitanga",
+            "email": "carolina.pitanga@example.com",
+            "matricula": "2026-1118",
+            "senha": "123456"
+            },
+        "dadosDisciplina":{ 
+            "nome": "Pensamento Computacional",
+            "codigo": "PC1234",
+            "cargaHoraria": 60
+    },
+        "statusCodeEsperdo": 201
+    },
+    {
+        "testTitle":"Validar que um aluno MARIA que acaba de ser cadastrado pode ser matriculado em uma nova disciplina",
+        "dadosAluno":{ 
+            "nome": "Maria Pitanga",
+            "email": "maria.pitanga@example.com",
+            "matricula": "2026-1114",
+            "senha": "123456"
+            },
+        "dadosDisciplina":{ 
+            "nome": "Pensamento Computacional",
+            "codigo": "PC1237",
+            "cargaHoraria": 60
+    },
+        "statusCodeEsperdo": 201
+    }
+]
