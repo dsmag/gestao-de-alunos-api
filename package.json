@@ -9,7 +9,8 @@
     "dev": "nodemon src/server.js",
     "test": "mocha test/**/*.test.js",
     "test:login": "mocha test/external/login.external.test.js",
-    "test:fluxoEntregaTrabalho": "mocha test/external/fluxoEntregaTrabalho.external.test.js"
+    "test:fluxoEntregaTrabalho": "mocha test/external/fluxoEntregaTrabalho.external.test.js", 
+    "test:report": "mocha test/external/login.external.test.js test/external/fluxoEntregaTrabalho.external.test.js --reporter mochawesome --reporter-options reportDir=mochawesome-report,reportFilename=mochawesome"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +30,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "mochawesome": "^8.1.1",
     "nodemon": "^3.1.4"
   }
 }
