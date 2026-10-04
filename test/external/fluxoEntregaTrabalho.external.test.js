@@ -18,7 +18,7 @@ describe('Fluxo de Entrega de trabalho como Aluno', () => {
         aluno = novoAluno();
     });
 
-    it.only('Validar que um aluno que acaba de ser cadastrado e matriculado em uma disciplina, consegue logar e entregar trabalhos', async () => {
+    it('Validar que um aluno que acaba de ser cadastrado e matriculado em uma disciplina, consegue logar e entregar trabalhos', async () => {
         // Arrange (Given/Dado que/Preparar)
         // Cadastrar Aluno
         const cadastroAlunoResposta = await api()

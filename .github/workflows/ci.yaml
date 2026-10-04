@@ -1,0 +1,60 @@
+name: '[CI] Automação de Testes na Camada de Serviço (API): Trabalho de conclusão'
+
+on:
+  # Disparo Manual
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - name: Intalando depêndencias
+        run: npm ci
+
+      - name: Criar arquivo .env
+        run: |
+          echo "API_URL=http://localhost:3000" >> .env
+          echo "ADMIN_EMAIL=${{ secrets.ADMIN_EMAIL }}" >> .env
+          echo "ADMIN_SENHA=${{ secrets.ADMIN_SENHA }}" >> .env
+          echo "ALUNO_EMAIL=${{ secrets.ALUNO_EMAIL }}" >> .env
+          echo "ALUNO_SENHA=${{ secrets.ALUNO_SENHA }}" >> .env          
+
+      - name: Iniciando a API
+        run: |
+          npm start > api.log 2>&1 &
+
+      - name: Aguardar a API
+        run: |
+          echo "Aguardando a API iniciar..."
+
+          for i in {1..30}; do
+            if curl -s http://localhost:3000 > /dev/null; then
+              echo "API disponível!"
+              exit 0
+            fi
+
+            echo "API ainda não está disponível. Tentativa $i/30..."
+            sleep 2
+          done
+
+          echo "A API não iniciou."
+          cat api.log
+          exit 1 
+
+      - name: Executando testes - Login
+        run: npm run test:login
+
+      - name: Executando testes - Entrega Trabalhos
+        run: npm run test:fluxoEntregaTrabalho
