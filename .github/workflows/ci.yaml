@@ -63,8 +63,20 @@ jobs:
           cat api.log
           exit 1 
 
-      - name: Executando testes - Login
-        run: npm run test:login
+      - name: Executando testes e gerando relatório
+        run: npm run test:report
+      
+      - name: Configurando GitHub Pages
+        if: always()
+        uses: actions/configure-pages@v4
 
-      - name: Executando testes - Entrega Trabalhos
-        run: npm run test:fluxoEntregaTrabalho
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./mochawesome-report
+
+      - name: Deploy to GitHub Pages
+        if: always()
+        id: deployment
+        uses: actions/deploy-pages@v4
