@@ -4,6 +4,16 @@ on:
   # Disparo Manual
   workflow_dispatch:
 
+  # Disparo por Push
+  push:
+    branches:
+      - main
+
+  # Disparo Agendado
+  schedule:
+    #cronograma de execução: a cada 6 minutos
+    - cron: '*/6 * * * *'
+
 permissions:
   contents: read
   pages: write
