@@ -70,6 +70,14 @@ jobs:
       - name: Executando testes e gerando relatório
         run: npm run test:report
       
+      - name: Verificar relatório
+        run: |
+          echo "Conteúdo do mochawesome-report:"
+          ls -la ./mochawesome-report
+
+      - name: Criar index.html para GitHub Pages
+        run: cp ./mochawesome-report/mochawesome.html ./mochawesome-report/index.html
+
       - name: Configurando GitHub Pages
         if: always()
         uses: actions/configure-pages@v4
